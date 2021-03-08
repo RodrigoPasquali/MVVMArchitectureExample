@@ -26,9 +26,6 @@ public class Repo {
     @Embedded(prefix = "owner_")
     private Owner owner;
 
-
-
-
     public static class Owner {
         @SerializedName("login")
         private String login;
