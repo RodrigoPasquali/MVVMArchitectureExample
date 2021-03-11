@@ -86,6 +86,11 @@ public class ApiResponse<T> {
         }
     }
 
+    public boolean isSuccessful() {
+        boolean isSuccess = (statusCode >= 200) && (statusCode < 300);
+        return isSuccess;
+    }
+
     public Integer getNextPage() {
         String nextPage = links.get(NEXT_LINK);
 

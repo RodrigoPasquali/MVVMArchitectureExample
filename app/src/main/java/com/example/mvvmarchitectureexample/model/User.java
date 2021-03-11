@@ -1,10 +1,15 @@
 package com.example.mvvmarchitectureexample.model;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+
 import com.google.gson.annotations.SerializedName;
 
+@Entity(primaryKeys = "login")
 public class User {
     //Para Retrofit-JsonConverter se usa el SerializedName
     @SerializedName("login")
+    @NonNull
     private String login;
     @SerializedName("avatarUrl")
     private String avatarUrl;

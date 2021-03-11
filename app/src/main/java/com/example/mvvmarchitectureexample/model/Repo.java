@@ -1,5 +1,6 @@
 package com.example.mvvmarchitectureexample.model;
 
+import androidx.annotation.NonNull;
 import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.Index;
@@ -12,6 +13,7 @@ import com.google.gson.annotations.SerializedName;
 public class Repo {
     private int id;
     @SerializedName("name")
+    @NonNull
     private String name;
     @SerializedName("full_name")
     private String fullName;
@@ -24,6 +26,7 @@ public class Repo {
     @SerializedName("owner")
     //Para tomar la clase interna owner en columnas para la tabla general
     @Embedded(prefix = "owner_")
+    @NonNull
     private Owner owner;
 
     public int getId() {
@@ -84,6 +87,7 @@ public class Repo {
 
     public static class Owner {
         @SerializedName("login")
+        @NonNull
         private String login;
 
         @SerializedName("url")
@@ -92,6 +96,14 @@ public class Repo {
         public Owner(String login, String url) {
             this.login = login;
             this.url = url;
+        }
+
+        public String getLogin() {
+            return login;
+        }
+
+        public String getUrl() {
+            return url;
         }
     }
 }

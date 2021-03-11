@@ -1,5 +1,6 @@
 package com.example.mvvmarchitectureexample.model;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.TypeConverters;
 
@@ -10,6 +11,7 @@ import java.util.List;
 @Entity(primaryKeys = "query")
 @TypeConverters({GithubTypeConverters.class})
 public class RepoSearchResult {
+    @NonNull
     private String query;
     private List<Integer> repoIds;
     private int totalCount;

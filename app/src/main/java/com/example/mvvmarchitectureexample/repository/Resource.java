@@ -15,7 +15,7 @@ public class Resource<T> {
         return new Resource<>(RequestStatus.SUCCESS, data, null);
     }
 
-    public static <T> Resource<T> erro(T data, String message) {
+    public static <T> Resource<T> error(T data, String message) {
         return new Resource<>(RequestStatus.ERROR, data, message);
     }
 
