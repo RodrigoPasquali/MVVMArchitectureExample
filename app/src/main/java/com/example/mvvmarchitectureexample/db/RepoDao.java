@@ -27,7 +27,7 @@ public abstract class RepoDao {
     public abstract void insertContributors(List<Contributor> contributors);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    public abstract void inserRepos(List<Repo> repos);
+    public abstract void insertRepos(List<Repo> repos);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     public abstract long createRepoIfNotExists(Repo repo);
