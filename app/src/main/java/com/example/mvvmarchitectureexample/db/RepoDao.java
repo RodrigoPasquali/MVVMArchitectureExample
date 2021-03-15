@@ -45,6 +45,9 @@ public abstract class RepoDao {
             "ORDER BY contributions DESC")
     public abstract LiveData<List<Contributor>> loadContributors(String repoName, String repoOwner);
 
+    @Query("SELECT * FROM Repo WHERE owner_login = :owner ORDER BY startCount DESC")
+    public abstract LiveData<List<Repo>> loadRepositories(String owner);
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     public abstract void insert(RepoSearchResult repoSearchResult);
 
