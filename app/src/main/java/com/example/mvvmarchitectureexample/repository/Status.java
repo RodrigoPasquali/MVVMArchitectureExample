@@ -1,6 +1,6 @@
 package com.example.mvvmarchitectureexample.repository;
 
-public enum RequestStatus {
+public enum Status {
     LOADING,
     SUCCESS,
     ERROR
