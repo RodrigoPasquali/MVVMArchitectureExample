@@ -5,12 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="com.example.mvvmarchitectureexample.model.Repo"/>
         <variable
             name="showFullName"
             type="boolean" />
         <variable
             name="repo"
-            type="com.example.mvvmarchitectureexample.model.Repo" />
+            type="Repo"/>
     </data>
 
     <androidx.cardview.widget.CardView
