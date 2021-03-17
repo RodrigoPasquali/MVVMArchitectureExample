@@ -1,13 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.user.UserFragment">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+        <import type="com.example.mvvmarchitectureexample.model.User"/>
+        <variable
+            name="user"
+            type="User" />
+
+        <import type="com.example.mvvmarchitectureexample.repository.Resource"/>
+        <variable
+            name="userResource"
+            type="Resource"/>
+
+        <import type="com.example.mvvmarchitectureexample.ui.common.RetryCall"/>
+        <variable
+            name="retryCall"
+            type="RetryCall" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="texto user" />
-</FrameLayout>
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/ll_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="154dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints">
+            app:visibleGone="@{user != null}"
+
+            <ImageView
+                android:id="@+id/iv_avatar"
+                android:layout_width="@dimen/photo_size"
+                android:layout_height="@dimen/photo_size"
+                android:background="@mipmap/ic_launcher"
+                android:contentDescription="@string/a11y_user_photo"
+                android:scaleType="centerCrop"
+                tools:layout_editor_absoluteY="8dp"
+                tools:layout_editor_absoluteX="8dp"
+                tools:ignore="MissingConstraints"/>
+            <!--                app:imageUrl="@{user.avatarUrl}"-->
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{user.name ?? user.login}"
+                tools:text="albert einstein"
+                android:contentDescription="@string/a11y_user_name"
+                app:layout_constraintStart_toEndOf="@+id/iv_avatar"
+                android:layout_marginStart="@dimen/default_margin"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginLeft="@dimen/default_margin"/>
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_repo_list"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            tools:listitem="@layout/repo_item"
+            app:layoutManager="LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@+id/ll_header"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"/>
+
+        <include
+            layout="@layout/loading_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:callback="@{() -> retryCall.retry()}"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:resource="@{userResource}"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

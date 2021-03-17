@@ -33,6 +33,7 @@ android {
 }
 
 dependencies {
+
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
@@ -52,11 +53,11 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:$room_version"
 
     //Dagger
-    implementation 'com.google.dagger:dagger:2.22.1'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.22.1'
-    implementation 'com.google.dagger:dagger-android-support:2.22.1'
+    implementation 'com.google.dagger:dagger:2.33'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.33'
+    implementation 'com.google.dagger:dagger-android-support:2.33'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
-    annotationProcessor 'com.google.dagger:dagger-android-processor:2.22.1'
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.33'
 
     //GLIDE
     implementation 'com.github.bumptech.glide:glide:4.9.0'

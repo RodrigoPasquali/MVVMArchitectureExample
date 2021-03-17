@@ -7,12 +7,13 @@
     <data>
         <import type="com.example.mvvmarchitectureexample.repository.Resource"/>
         <import type="com.example.mvvmarchitectureexample.repository.Status" />
+        <import type="com.example.mvvmarchitectureexample.ui.common.RetryCall"/>
         <variable
             name="resource"
             type="Resource"/>
         <variable
             name="callback"
-            type="com.example.mvvmarchitectureexample.ui.common.RetryCall"/>
+            type="RetryCall"/>
     </data>
 
     <LinearLayout
@@ -21,13 +22,15 @@
         android:orientation="vertical"
         android:gravity="center"
         android:padding="@dimen/default_margin">
-        <!--        app:visibleGone="@{resource.data == null}"-->
+<!--        app:visibleGone="@{resource.data == null}">-->
+
         <ProgressBar
             android:id="@+id/progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="?android:attr/progressBarStyle"
             android:layout_margin="8dp"/>
+<!--            android:visibility="@{resource.status == Status.LOADING ? View.GONE : View.VISIBLE}"/>-->
         <!--            app:visibleGone="@{resource.status == Status.LOADING}"-->
 
         <Button android:layout_width="wrap_content"
