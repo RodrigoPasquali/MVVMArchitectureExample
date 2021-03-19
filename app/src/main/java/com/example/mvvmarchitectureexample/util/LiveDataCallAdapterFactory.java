@@ -1,0 +1,38 @@
+package com.example.mvvmarchitectureexample.util;
+
+import androidx.lifecycle.LiveData;
+
+import com.example.mvvmarchitectureexample.api.ApiResponse;
+
+import java.lang.annotation.Annotation;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+
+import retrofit2.CallAdapter;
+import retrofit2.Retrofit;
+
+public class LiveDataCallAdapterFactory extends CallAdapter.Factory {
+    @Override
+    public CallAdapter<?, ?> get(Type returnType, Annotation[] annotations, Retrofit retrofit) {
+        LiveDataCallAdapter<?> liveDataCallAdapter = null;
+
+        if(getRawType(returnType) == LiveData.class){
+            Type observableType = getParameterUpperBound(0, (ParameterizedType) returnType);
+            Class<?> rawObservableType = getRawType(observableType);
+
+            if(rawObservableType != ApiResponse.class){
+                throw new IllegalArgumentException("type must be a resource");
+            }
+
+            if(!(observableType instanceof ParameterizedType)){
+                throw new IllegalArgumentException("Resource must be parameterized");
+            }
+
+            Type bodyType = getParameterUpperBound(0, (ParameterizedType) observableType);
+
+            liveDataCallAdapter = new LiveDataCallAdapter<>(bodyType);
+        }
+
+        return liveDataCallAdapter;
+    }
+}
