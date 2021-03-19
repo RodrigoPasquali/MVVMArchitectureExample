@@ -26,8 +26,9 @@
         <variable
             name="callback"
             type="RetryCall" />
+    </data>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <com.google.android.material.textfield.TextInputLayout
@@ -104,5 +105,4 @@
                 app:resource="@{searchResource}"
                 app:callback="@{() -> callback.retry()}"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </data>
 </layout>
