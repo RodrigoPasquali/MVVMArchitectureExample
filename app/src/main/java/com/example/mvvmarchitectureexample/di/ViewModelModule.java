@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.mvvmarchitectureexample.ui.repo.RepoViewModel;
 import com.example.mvvmarchitectureexample.ui.search.SearchViewModel;
 import com.example.mvvmarchitectureexample.ui.user.UserViewModel;
+import com.example.mvvmarchitectureexample.viewmodel.GithubViewModelFactory;
 
 import dagger.Binds;
 import dagger.Module;
