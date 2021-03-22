@@ -75,7 +75,7 @@ public class RepoFragment extends Fragment implements Injectable {
         ContributorAdapter adapter = new ContributorAdapter(dataBindingComponent, new ContributorAdapter.ContributorClickCallback() {
             @Override
             public void onClick(Contributor contributor) {
-//                navigationController.navigateToUser(contributor.getLogin());
+                navigationController.navigateToUser(contributor.getLogin());
             }
         });
 
@@ -99,7 +99,7 @@ public class RepoFragment extends Fragment implements Injectable {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        //FragmentSearchBinding se genera automaticamente a partir del uso de databinding
+        //FragmentRepoBinding se genera automaticamente a partir del uso de databinding
         //del xml fragment_repo
         FragmentRepoBinding dataBinding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_repo, container, false);

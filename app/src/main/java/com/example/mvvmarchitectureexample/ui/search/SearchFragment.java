@@ -43,6 +43,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 public class SearchFragment extends Fragment implements Injectable {
+    private SearchViewModel searchViewModel;
     @Inject
     ViewModelProvider.Factory viewModelProvider;
     @Inject
@@ -50,7 +51,6 @@ public class SearchFragment extends Fragment implements Injectable {
     DataBindingComponent dataBindingComponent = new FragmentDataBindingComponent(this);
     AutoClearedValue<FragmentSearchBinding> binding;
     AutoClearedValue<RepoListAdapter> adapter;
-    private SearchViewModel searchViewModel;
 
     public SearchFragment() {
         // Required empty public constructor
@@ -78,7 +78,7 @@ public class SearchFragment extends Fragment implements Injectable {
                 new RepoListAdapter.RepoClickCallback() {
             @Override
             public void onClick(Repo repo) {
-//                navigationController.navigateToRepo(repo.getOwner().getLogin(), repo.getName());
+                navigationController.navigateToRepo(repo.getOwner().getLogin(), repo.getName());
             }
         }, true);
 
