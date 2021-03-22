@@ -59,6 +59,8 @@ public class SearchFragment extends Fragment implements Injectable {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        //FragmentSearchBinding se genera automaticamente a partir del uso de databinding
+        // del xml fragment_search
         FragmentSearchBinding dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_search,
                 container, false, dataBindingComponent);
         binding = new AutoClearedValue<>(this, dataBinding);
